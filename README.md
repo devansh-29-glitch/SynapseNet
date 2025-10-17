@@ -26,6 +26,7 @@ It demonstrates how neural time-series data can be processed, visualized, and le
 ## 🧪 Visual Results
 Example outputs generated during training and signal analysis:
 
-| Brain Signal Simulation | Training Loss Curve |
+| Brain Signal Simulation | Training Loss Curve | Neural Band Power Topography |
 |--------------------------|---------------------|
-| ![Brain Signal](assets/signal_plot.png) | ![Training Loss](assets/loss_curve.png) |
+| ![Brain Signal](assets/signal_plot.png) | ![Training Loss](assets/loss_curve.png) |  ![Neural Band Power Topography](assets/neural_band_power_topography.png) | 
+
