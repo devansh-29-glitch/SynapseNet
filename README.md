@@ -36,7 +36,7 @@ This project was built as part of my neuroscience + AI research portfolio, showi
 Example outputs generated during training and signal analysis:
 
 | Brain Signal Simulation | Training Loss Curve | Neural Band Power Topography |
-|--------------------------|---------------------|
+
 | ![Brain Signal](assets/signal_plot.png) | ![Training Loss](assets/loss_curve.png) |  ![Neural Band Power Topography](assets/Neural_band_power_topography.png) | 
 
 
@@ -46,6 +46,7 @@ Example outputs generated during training and signal analysis:
 ## 👨‍💻 Author  
 **Devansh Sharma**  
 *Neuroscience & Artificial Intelligence Research Enthusiast*  
+
 
 
 
