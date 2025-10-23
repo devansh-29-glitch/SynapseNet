@@ -1,4 +1,4 @@
-# Ignore virtual environment
+# saare virtual environment ko hi ignore karna hai
 venv/
 __pycache__/
 *.pyc
