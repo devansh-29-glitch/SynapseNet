@@ -1,4 +1,4 @@
-# synapsenet_main.py --- SynapseNet (scikit-learn, CPU-safe)
+# synapsenet_main.py --- SynapseNet (sabse pehle isko hi likhna hai otbo of previous code)
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -9,7 +9,7 @@ from sklearn.pipeline import make_pipeline
 from sklearn.svm import SVC
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
 
-# ---------- 1) Synthetic EEG-like generator ----------
+# EEG generation wala
 def generate_brain_data(n_samples=10000, n_channels=8, fs=128, seed=42):
     rng = np.random.default_rng(seed)
     t = np.arange(n_samples) / fs
@@ -22,12 +22,12 @@ def generate_brain_data(n_samples=10000, n_channels=8, fs=128, seed=42):
         data[ch] += 0.1 * np.sin(2*np.pi*0.2*t + rng.uniform(0, 2*np.pi))
     return data, t, fs
 
-# ---------- 2) Bandpass helper ----------
+# bandpass helper
 def bandpass(data, fs, low=1.0, high=40.0, order=4):
     sos = butter(order, [low, high], btype="bandpass", fs=fs, output="sos")
     return sosfiltfilt(sos, data, axis=-1)
 
-# ---------- 3) Epoching ----------
+# epoch
 def make_epochs(data, fs, epoch_len_s=2.0):
     n_channels, n_samples = data.shape
     win = int(epoch_len_s * fs)
@@ -36,7 +36,7 @@ def make_epochs(data, fs, epoch_len_s=2.0):
     epochs = trimmed.reshape(n_channels, n_epochs, win).transpose(1,0,2)
     return epochs  # (n_epochs, n_channels, win)
 
-# ---------- 4) Band-power features ----------
+# BP ke feature
 BANDS = {"delta": (1,4), "theta": (4,8), "alpha": (8,13), "beta":  (13,30)}
 
 def bandpower_from_epoch(epoch_1d, fs):
@@ -63,11 +63,11 @@ def extract_features(epochs, fs):
             feat_names.append(f"ch{ch+1}_{name}")
     return feats, feat_names
 
-# ---------- 5) Labels ----------
+# labels
 def simulate_labels(n_epochs):
     return np.array([0 if i % 2 == 0 else 1 for i in range(n_epochs)])
 
-# ========== RUN PIPELINE ==========
+
 if __name__ == "__main__":
     data, t, fs = generate_brain_data(n_samples=20000, n_channels=8, fs=128)
     data = bandpass(data, fs, 1, 40)
